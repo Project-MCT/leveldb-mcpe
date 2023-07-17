@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(leveldb-mcpe)
 
-# 设置编译选项
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
-# 添加源文件
 set(SOURCES
     ./db/builder.cc
     ./db/c.cc
@@ -55,12 +53,10 @@ set(SOURCES
     ./port/port_posix_sse.cc
     )
 
-# 添加memenv源文件
 set(MEMENV_SOURCES
     ./helpers/memenv/memenv.cc
 )
 
-# 添加头文件路径
 include_directories(
     ./db
     ./table
@@ -69,67 +65,61 @@ include_directories(
     ./helpers/memenv
 )
 
-# 根据平台和构架设置输出路径和库名称
 set(OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/output")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_DIR})
+set(LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_DIR})
 
-# 设置用户可选的平台选项
 set(PLATFORMS "ALL" "WIN32" "LINUX" "FREEBSD" "MACOS" "ANDROID" "IOS")
 
-# 根据不同平台生成动态链接库
 if (PLATFORMS STREQUAL "ALL")
 
 elseif (PLATFORMS STREQUAL "WIN32")
-    if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-win32-i686.dll")
-
-    elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
+elseif (PLATFORMS STREQUAL "WIN32")
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         include(CheckCXXCompilerFlag)
         check_cxx_compiler_flag("-mavx" COMPILER_SUPPORTS_AVX)
 
         if (COMPILER_SUPPORTS_AVX)
-            target_compile_options(MyLibrary PRIVATE "-mavx")
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-win32-amd64.dll")
+            target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "-mavx")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-win32-amd64.dll")
         else()
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-win32-amd64-noAVX.dll")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-win32-amd64-no_avx.dll")
         endif()
     endif()
 elseif (PLATFORMS STREQUAL "LINUX")
     if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-linux-i686.so")
+        add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-linux-i686.so")
 
     elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
         include(CheckCXXCompilerFlag)
         check_cxx_compiler_flag("-mavx" COMPILER_SUPPORTS_AVX)
 
         if (COMPILER_SUPPORTS_AVX)
-            target_compile_options(MyLibrary PRIVATE "-mavx")
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-linux-amd64.so")
+            target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "-mavx")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-linux-amd64.so")
         else()
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-linux-amd64-noAVX.so")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-linux-amd64-no_avx.so")
         endif()
     endif()
 elseif (PLATFORMS STREQUAL "FREEBSD")
     if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-freebsd-i686.so")
+        add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-freebsd-i686.so")
     elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
         include(CheckCXXCompilerFlag)
         check_cxx_compiler_flag("-mavx" COMPILER_SUPPORTS_AVX)
 
         if (COMPILER_SUPPORTS_AVX)
-            target_compile_options(MyLibrary PRIVATE "-mavx")
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-freebsd-amd64.so")
+            target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "-mavx")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-freebsd-amd64.so")
         else()
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-freebsd-amd64-noAVX.so")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-freebsd-amd64-no_avx.so")
         endif()
     endif()
 elseif (PLATFORMS STREQUAL "MACOS")
@@ -138,40 +128,40 @@ elseif (PLATFORMS STREQUAL "MACOS")
         check_cxx_compiler_flag("-mavx" COMPILER_SUPPORTS_AVX)
 
         if (COMPILER_SUPPORTS_AVX)
-            target_compile_options(MyLibrary PRIVATE "-mavx")
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-macos-x86_64.dylib")
+            target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "-mavx")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-macos-x86_64.dylib")
         else()
-            add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-            set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-macos-x86_64-noAVX.dylib")
+            add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+            set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-macos-x86_64-no_avx.dylib")
         endif()
     elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
         # Apple Silicon
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-macos-arm64.dylib")
+        add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-macos-arm64.dylib")
     endif ()
 
 elseif (PLATFORMS STREQUAL "ANDROID")
     if(${ANDROID_ABI} STREQUAL "armeabi-v7a")
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-android-armeabi-v7a.so")
+        add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-android-armeabi-v7a.so")
     elseif(${ANDROID_ABI} STREQUAL "arm64-v8a")
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-android-aarch64.so")
+        add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-android-aarch64.so")
     elseif(${ANDROID_ABI} STREQUAL "x86")
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-android-x86.so")
+        add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-android-x86.so")
     elseif (${ANDROID_ABI} STREQUAL "x86_64")
-        add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-        set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX "-android-x86_64.so")
+        add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SUFFIX "-android-x86_64.so")
     else()
         message("Unsupported processor architecture, please submit a pull request or modify the CMakeList.txt file by yourself.")
     endif()
 
 elseif (PLATFORMS STREQUAL "IOS")
     # Only for Apple Silicon.
-    add_library(${PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
-    set_target_properties(${PROJECT_NAME}) 
+    add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES} ${MEMENV_SOURCES})
+    set_target_properties(${CMAKE_PROJECT_NAME}) 
 
 else ()
 
