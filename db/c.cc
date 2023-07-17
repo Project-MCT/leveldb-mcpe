@@ -6,17 +6,17 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "leveldb/cache.h"
-#include "leveldb/comparator.h"
-#include "leveldb/db.h"
-#include "leveldb/env.h"
-#include "leveldb/filter_policy.h"
-#include "leveldb/iterator.h"
-#include "leveldb/options.h"
-#include "leveldb/status.h"
-#include "leveldb/write_batch.h"
-#include "leveldb/zlib_compressor.h"
-#include "leveldb/snappy_compressor.h"
+#include "../include/leveldb/cache.h"
+#include "../include/leveldb/comparator.h"
+#include "../include/leveldb/db.h"
+#include "../include/leveldb/env.h"
+#include "../include/leveldb/filter_policy.h"
+#include "../include/leveldb/iterator.h"
+#include "../include/leveldb/options.h"
+#include "../include/leveldb/status.h"
+#include "../include/leveldb/write_batch.h"
+#include "../include/leveldb/zlib_compressor.h"
+#include "../include/leveldb/snappy_compressor.h"
 
 using leveldb::Cache;
 using leveldb::Comparator;

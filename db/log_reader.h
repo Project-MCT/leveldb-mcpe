@@ -7,9 +7,9 @@
 
 #include <stdint.h>
 
-#include "db/log_format.h"
-#include "leveldb/slice.h"
-#include "leveldb/status.h"
+#include "../db/log_format.h"
+#include "../include/leveldb/slice.h"
+#include "../include/leveldb/status.h"
 
 namespace leveldb {
 

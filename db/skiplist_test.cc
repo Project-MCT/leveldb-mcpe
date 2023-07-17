@@ -4,11 +4,11 @@
 
 #include "db/skiplist.h"
 #include <set>
-#include "leveldb/env.h"
-#include "util/arena.h"
-#include "util/hash.h"
-#include "util/random.h"
-#include "util/testharness.h"
+#include "../include/leveldb/env.h"
+#include "../util/arena.h"
+#include "../util/hash.h"
+#include "../util/random.h"
+#include "../util/testharness.h"
 
 namespace leveldb {
 

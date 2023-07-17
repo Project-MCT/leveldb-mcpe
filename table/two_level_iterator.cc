@@ -4,10 +4,10 @@
 
 #include "table/two_level_iterator.h"
 
-#include "leveldb/table.h"
-#include "table/block.h"
-#include "table/format.h"
-#include "table/iterator_wrapper.h"
+#include "../include/leveldb/table.h"
+#include "../table/block.h"
+#include "../table/format.h"
+#include "../table/iterator_wrapper.h"
 
 namespace leveldb {
 

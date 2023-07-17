@@ -21,13 +21,13 @@
 #include <deque>
 #include <limits>
 #include <set>
-#include "leveldb/env.h"
-#include "leveldb/slice.h"
-#include "port/port.h"
-#include "util/logging.h"
-#include "util/mutexlock.h"
-#include "util/posix_logger.h"
-#include "util/env_posix_test_helper.h"
+#include "../include/leveldb/env.h"
+#include "../include/leveldb/slice.h"
+#include "../port/port.h"
+#include "../util/logging.h"
+#include "../util/mutexlock.h"
+#include "../util/posix_logger.h"
+#include "../util/env_posix_test_helper.h"
 
 namespace leveldb {
 

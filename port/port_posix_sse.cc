@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 #include <string.h>
-#include "port/port.h"
+#include "../port/port.h"
 
 #if defined(LEVELDB_PLATFORM_POSIX_SSE)
 

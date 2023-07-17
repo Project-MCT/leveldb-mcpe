@@ -4,13 +4,13 @@
 
 #include "table/format.h"
 
-#include "leveldb/env.h"
-#include "leveldb/compressor.h"
-#include "port/port.h"
-#include "table/block.h"
-#include "util/coding.h"
-#include "util/crc32c.h"
-#include "leveldb/decompress_allocator.h"
+#include "../include/leveldb/env.h"
+#include "../include/leveldb/compressor.h"
+#include "../port/port.h"
+#include "../table/block.h"
+#include "../util/coding.h"
+#include "../util/crc32c.h"
+#include "../include/leveldb/decompress_allocator.h"
 #include <map>
 
 namespace leveldb {

@@ -13,13 +13,13 @@
 //    len: varint32
 //    data: uint8[len]
 
-#include "leveldb/write_batch.h"
+#include "../include/leveldb/write_batch.h"
+#include "../include/leveldb/db.h"
 
-#include "leveldb/db.h"
-#include "db/dbformat.h"
-#include "db/memtable.h"
-#include "db/write_batch_internal.h"
-#include "util/coding.h"
+#include "../db/dbformat.h"
+#include "../db/memtable.h"
+#include "../db/write_batch_internal.h"
+#include "../util/coding.h"
 
 namespace leveldb {
 

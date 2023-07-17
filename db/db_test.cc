@@ -2,20 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "leveldb/db.h"
-#include "leveldb/filter_policy.h"
-#include "db/db_impl.h"
-#include "db/filename.h"
-#include "db/version_set.h"
-#include "db/write_batch_internal.h"
-#include "leveldb/cache.h"
-#include "leveldb/env.h"
-#include "leveldb/table.h"
-#include "util/hash.h"
-#include "util/logging.h"
-#include "util/mutexlock.h"
-#include "util/testharness.h"
-#include "util/testutil.h"
+#include "../include/leveldb/db.h"
+#include "../include/leveldb/filter_policy.h"
+#include "../db/db_impl.h"
+#include "../db/filename.h"
+#include "../db/version_set.h"
+#include "../db/write_batch_internal.h"
+#include "../include/leveldb/cache.h"
+#include "../include/leveldb/env.h"
+#include "../include/leveldb/table.h"
+#include "../util/hash.h"
+#include "../util/logging.h"
+#include "../util/mutexlock.h"
+#include "../util/testharness.h"
+#include "../util/testutil.h"
 
 namespace leveldb {
 

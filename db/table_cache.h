@@ -9,10 +9,10 @@
 
 #include <string>
 #include <stdint.h>
-#include "db/dbformat.h"
-#include "leveldb/cache.h"
-#include "leveldb/table.h"
-#include "port/port.h"
+#include "../db/dbformat.h"
+#include "../include/leveldb/cache.h"
+#include "../include/leveldb/table.h"
+#include "../port/port.h"
 
 namespace leveldb {
 

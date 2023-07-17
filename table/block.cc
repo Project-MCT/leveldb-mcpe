@@ -8,10 +8,10 @@
 
 #include <vector>
 #include <algorithm>
-#include "leveldb/comparator.h"
-#include "table/format.h"
-#include "util/coding.h"
-#include "util/logging.h"
+#include "../include/leveldb/comparator.h"
+#include "../table/format.h"
+#include "../util/coding.h"
+#include "../util/logging.h"
 
 namespace leveldb {
 

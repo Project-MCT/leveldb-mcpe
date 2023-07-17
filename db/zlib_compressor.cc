@@ -1,6 +1,6 @@
 #ifndef NO_ZLIB
 
-#include "leveldb/zlib_compressor.h"
+#include "../include/leveldb/zlib_compressor.h"
 
 #include <zlib.h>
 #include <algorithm>

@@ -5,16 +5,16 @@
 #include "leveldb/table_builder.h"
 
 #include <assert.h>
-#include "leveldb/comparator.h"
-#include "leveldb/env.h"
-#include "leveldb/filter_policy.h"
-#include "leveldb/options.h"
-#include "table/block_builder.h"
-#include "table/filter_block.h"
-#include "table/format.h"
-#include "util/coding.h"
-#include "util/crc32c.h"
-#include "leveldb/compressor.h"
+#include "../include/leveldb/comparator.h"
+#include "../include/leveldb/env.h"
+#include "../include/leveldb/filter_policy.h"
+#include "../include/leveldb/options.h"
+#include "../table/block_builder.h"
+#include "../table/filter_block.h"
+#include "../table/format.h"
+#include "../util/coding.h"
+#include "../util/crc32c.h"
+#include "../include/leveldb/compressor.h"
 
 namespace leveldb {
 

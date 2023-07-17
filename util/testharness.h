@@ -8,9 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sstream>
-#include "leveldb/env.h"
-#include "leveldb/slice.h"
-#include "util/random.h"
+#include "../include/leveldb/env.h"
+#include "../include/leveldb/slice.h"
+#include "../util/random.h"
 
 namespace leveldb {
 namespace test {
